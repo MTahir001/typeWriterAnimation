@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap");
+
+:root {
+  --bg-color: #d6cda9;
+  --typewriter-speed: 5s;
+  --typewriter-char: 30;
+}
+
+body {
+  display: grid;
+  place-items: center;
+
+  background: var(--bg-color);
+  min-height: 100vh;
+  margin: 0;
+
+  font-family: "Source Code Pro", monospace;
+  text-align: center;
+}
+
+h1 {
+  position: relative;
+  font-size: clamp(1rem, 3vw + 1rem, 4rem);
+  font-weight: 200;
+}
+
+h1::before,
+h1::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+h1::before {
+  background: var(--bg-color);
+  animation: typeWriter var(--typewriter-speed) 1s steps(var(--typewriter-char)) forwards;
+}
+h1::after {
+  background: black;
+  width: 0.125em;
+  animation: typeWriter var(--typewriter-speed) 1s steps(var(--typewriter-char)) forwards,
+    blink 664ms steps(30) forwards infinite;
+}
+
+.subtitle {
+    color: #262116c0;
+    font-weight: 400;
+    font-size: 2rem;
+    
+    opacity: 0;
+    transform: translateY(3rem);
+    animation: fadeInUp 2s ease calc(var(--typewriter-speed) + 2s) forwards;
+}
+
+@keyframes typeWriter {
+  to {
+    left: 100%;
+  }
+}
+@keyframes blink {
+  to {
+    background: var(--bg-color);
+  }
+}
+@keyframes fadeInUp{
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
