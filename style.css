@@ -13,6 +13,7 @@ body {
   background: var(--bg-color);
   min-height: 100vh;
   margin: 0;
+  min-width: 380px;
 
   font-family: "Source Code Pro", monospace;
   text-align: center;
@@ -33,23 +34,25 @@ h1::after {
 
 h1::before {
   background: var(--bg-color);
-  animation: typeWriter var(--typewriter-speed) 1s steps(var(--typewriter-char)) forwards;
+  animation: typeWriter var(--typewriter-speed) 1s steps(var(--typewriter-char))
+    forwards;
 }
 h1::after {
   background: black;
   width: 0.125em;
-  animation: typeWriter var(--typewriter-speed) 1s steps(var(--typewriter-char)) forwards,
+  animation: typeWriter var(--typewriter-speed) 1s steps(var(--typewriter-char))
+      forwards,
     blink 664ms steps(30) forwards infinite;
 }
 
 .subtitle {
-    color: #262116c0;
-    font-weight: 400;
-    font-size: 2rem;
-    
-    opacity: 0;
-    transform: translateY(3rem);
-    animation: fadeInUp 2s ease calc(var(--typewriter-speed) + 2s) forwards;
+  color: #262116c0;
+  font-weight: 400;
+  font-size: 2rem;
+
+  opacity: 0;
+  transform: translateY(3rem);
+  animation: fadeInUp 2s ease calc(var(--typewriter-speed) + 2s) forwards;
 }
 
 @keyframes typeWriter {
@@ -62,9 +65,18 @@ h1::after {
     background: var(--bg-color);
   }
 }
-@keyframes fadeInUp{
-    to{
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 630px) {
+  h1 {
+    font-size: clamp(0.8rem, 2vw + 0.8rem, 3rem);
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
 }
